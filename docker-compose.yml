@@ -28,3 +28,4 @@ services:
     build: .
     depends_on:
       - kafka
+      - zookeeper
