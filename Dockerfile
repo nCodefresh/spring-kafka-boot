@@ -12,4 +12,4 @@ ADD pom.xml /code/pom.xml
 
 ADD src /code/src
 
-RUN ["mvn", "test"]
+CMD ["mvn", "test"]
