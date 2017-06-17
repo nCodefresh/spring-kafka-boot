@@ -24,7 +24,7 @@ The default ```docker-compose.yml``` should be seen as a starting point. By defa
 
 - ```docker-compose -f docker-compose-single-broker.yml up```
 
-## Instruction : how to build this example in Codefresh
+## [Instruction : how to build this example in Codefresh](https://docs.codefresh.io/docs/spring-boot-kafka-zookeeper)
 
 - Fork this repo
 - Login to Codefresh using your GitHub account
