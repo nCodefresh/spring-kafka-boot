@@ -22,14 +22,6 @@ services:
     depends_on:
       - zookeeper
 
-#  kafka:
-#    image: spotify/kafka
-#    ports:
-#      - 2181:2181
-#      - 9092:9092
-#    environment:
-#      ADVERTISED_HOST: 192.168.99.100
-#      ADVERTISED_PORT: 9092
   spring_boot:
     build: .
     depends_on:

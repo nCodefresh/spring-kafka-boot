@@ -1,21 +1,10 @@
-[![Docker Pulls](https://img.shields.io/docker/pulls/wurstmeister/kafka.svg)](https://hub.docker.com/r/wurstmeister/kafka/)
-[![Docker Stars](https://img.shields.io/docker/stars/wurstmeister/kafka.svg)](https://hub.docker.com/r/wurstmeister/kafka/)
-[![](https://badge.imagelayers.io/wurstmeister/kafka:latest.svg)](https://imagelayers.io/?images=wurstmeister/kafka:latest)
-
-kafka-docker
-============
-
-Dockerfile for [Apache Kafka](http://kafka.apache.org/)
-
-The image is available directly from [Docker Hub](https://hub.docker.com/r/wurstmeister/kafka/)
-
-## Pre-Requisites
+## Pre-Requisites to run this example locally
 
 - install docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 - modify the ```KAFKA_ADVERTISED_HOST_NAME``` in ```docker-compose.yml``` to match your docker host IP (Note: Do not use localhost or 127.0.0.1 as the host ip if you want to run multiple brokers.)
 - if you want to customize any Kafka parameters, simply add them as environment variables in ```docker-compose.yml```, e.g. in order to increase the ```message.max.bytes``` parameter set the environment to ```KAFKA_MESSAGE_MAX_BYTES: 2000000```. To turn off automatic topic creation set ```KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'```
 
-## Usage
+## Usage this example locally
 
 Start a cluster:
 
@@ -34,6 +23,20 @@ Destroy a cluster:
 The default ```docker-compose.yml``` should be seen as a starting point. By default each broker will get a new port number and broker id on restart. Depending on your use case this might not be desirable. If you need to use specific ports and broker ids, modify the docker-compose configuration accordingly, e.g. [docker-compose-single-broker.yml](https://github.com/wurstmeister/kafka-docker/blob/master/docker-compose-single-broker.yml):
 
 - ```docker-compose -f docker-compose-single-broker.yml up```
+
+## Instruction : how to build this example in Codefresh
+
+- Fork this repo
+- Login to Codefresh using your GitHub account
+- Go to the tab Composition
+- Add a new composition with file from repository
+- Choose the path to the docker-compose.yml
+- Continue to follow the instructions in the dialog
+- Build the images
+
+Now you have a added repository and composition in Codefresh. You can just launch the created composition to see the results.
+If you need to change the `kafka` Docker image you can do it in the `./kafka/Dockerfile`.
+Also, using the Environment variables you are able to set up the `kafka` service in your composition.
 
 ## Broker IDs
 
@@ -88,7 +91,3 @@ For example, to connect to a kafka running locally (assumes exposing port 1099)
       JMX_PORT: 1099
 
 Jconsole can now connect at ```jconsole 192.168.99.100:1099```
-
-## Tutorial
-
-[http://wurstmeister.github.io/kafka-docker/](http://wurstmeister.github.io/kafka-docker/)
